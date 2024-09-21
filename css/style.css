@@ -8642,6 +8642,10 @@ h1, h2, h3, h4, h5,
         background: rgba(255, 255, 255, 0.4); }
         .owl-carousel.home-slider .owl-dots .owl-dot.active {
           background: #fff; }
+          .home-slider.owl-carousel.owl-loaded.owl-drag {
+            overflow: hidden;
+            pointer-events: none; /* add this to allow scroll events to pass through */
+          }
 
 .hero-wrap {
   width: 100%;

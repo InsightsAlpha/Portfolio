@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Get in Touch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                font-family:sans-serif;
+            }
+            body{
+                background-color: #26263b;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                
+            }
+            .main{
+                flex-basis: 650px;
+                box-shadow: 0px 0px 10px 2px #ccc;
+                background-color: white;
+                padding-top: 110px; 
+                margin-top: 30px
+
+            }
+            .main h3{
+                padding: 60px 20px 5px 20px;
+                font-size: 30px;
+            }
+            .main form{
+                padding: 20px;
+            }
+            .form-outer{
+                margin-bottom: 25px;
+            }
+            .form-outer label{
+                display: block;
+            }
+            .form-outer input{
+                width: 100%;
+                height: 35px;
+            }
+        
+            .form-message textarea{
+                width: 100%;
+                height: 180px;
+                margin-bottom: 20px;
+            }
+            .form-outer button{
+                padding: 0px 1px;
+                width: 100%;
+                background-color: #26263b;
+                color: white;
+                font-size: 20px;
+                
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 200px;
+                background-color: #26263b;
+                padding: 0px;
+                text-align: center;
+                z-index: 1;
+            }
+            
+            nav img {
+                width: 650px;
+                height: 100%;
+                object-fit: contain;
+                max-width: 100%;
+                box-shadow: 0px 0px 10px 2px #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <img src="\images\\Cover Form.png" alt="Cover Page" width="100vw" >
+        </nav>
+        <div class="main">
+            <h3> Get in touch! &nbsp </h3> <h4 style="text-align: right; margin-right: 20px"><i> <b>_`Satyam Kumar`</i> </h5>
+            <form method="post" id="form"> 
+                <div id="res" style="color:green; font-size:25px;"></div>
+                <div class="form-outer">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter Email: abc@gmail.com">
+                </div>
+                <div class="form-outer">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Enter Name: Aman ">
+                </div>
+                <div class="form-outer">
+                    <label>Phone</label>
+                    <input type="phone" name="phone" placeholder="Enter Phone Number: +918287586545 ">
+                </div>
+                <div class="form-message">
+                    <label>Message:</label>
+                    <textarea name="message" placeholder="Write Message Here.."></textarea>
+                </div>
+                <div class="form-outer">
+                    <button name="btn">Submit</button>
+                </div>
+                
+                <h4><a href="/index.html" style=" color:#cd4545; font-size:21px; text-decoration: none;"> <b style=" color: #eb2632; font-size:35px; text-decoration: none;">&#8606</b><i> GoBack </i><b style=" color: #eb2632; font-size:35px; text-decoration: none;">&#10523 </b></a></h4>
+            </form>
+        </div>
+        <script>
+            let url='https://script.google.com/macros/s/AKfycbzpwp_M_VHgWOK-zVGkx4KA_q_lePtEeNGW8DBYyM8CvSSkmEyzqBid_0YEYrj30LZl/exec'
+            let form=document.querySelector('#form');
+            form.addEventListener("submit",(e)=>{
+                e.target.btn.innerHTML="Submitting...";
+                let d=new FormData(form);
+                fetch(url,{
+                    method:"POST",
+                    body:d
+                }).then((res)=>res.text())
+                .then((finalRes)=>{
+                    e.target.btn.innerHTML="Submit"
+                    document.getElementById("res").innerHTML=finalRes+"&nbsp I will Contact You Soon.";
+                    form.reset();
+                    setTimeout(()=>{
+                        document.getElementById("res").innerHTML="";
+                    },10000)
+
+                })
+                e.preventDefault();
+            })
+        </script>
+    </body>
+</html>
